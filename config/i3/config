@@ -1,0 +1,256 @@
+# i3 config file (v4)
+# Configuration for i3 window manager - Based on Hyprland setup
+# Using official Catppuccin Frappe theme
+
+# Include official Catppuccin Frappe color scheme
+include ~/.config/i3/catppuccin-frappe
+
+# Set mod key (Mod4 = Super/Windows key, same as your Hyprland setup)
+set $mod Mod4
+
+# Font for window titles and bar - Increased size for high DPI (2880x1920@120Hz)
+font pango:JetBrainsMono NF Regular 14
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Define program variables (matching your Hyprland setup)
+set $terminal kitty
+set $fileManager thunar
+set $menu rofi -show drun
+set $editor code
+set $browser firefox-esr
+
+# Autostart applications
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/wallpaper.png  # Use --bg-fill to crop/fit properly
+exec --no-startup-id redshift -l 54.6872:25.2797  # Vilnius coordinates, adjust for your location
+
+# High DPI scaling for applications (2880x1920@120Hz display)
+exec --no-startup-id xrandr --dpi 180  # Adjust DPI for better scaling
+exec --no-startup-id export GDK_SCALE=1.5
+exec --no-startup-id export GDK_DPI_SCALE=1
+exec --no-startup-id export QT_AUTO_SCREEN_SCALE_FACTOR=1
+exec --no-startup-id export QT_SCALE_FACTOR=1.5
+
+# Key bindings - matching your Hyprland setup as closely as possible
+
+# Terminal (Super+Return)
+bindsym $mod+Return exec $terminal
+
+# Kill focused window (Super+Shift+Q)
+bindsym $mod+Shift+q kill
+
+# Application launcher (Super+D or Super+Space)
+bindsym $mod+d exec $menu
+bindsym $mod+space exec $menu
+
+# File manager (Super+E)
+bindsym $mod+e exec $fileManager
+
+# Text editor (Super+R)
+bindsym $mod+r exec $editor
+
+# Browser (Super+Shift+Return)
+bindsym $mod+Shift+Return exec $browser
+
+# Change focus (Super+Arrow keys, matching your Hyprland setup)
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Alternatively, you can use vim-like keys
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window (Super+Shift+Arrow keys)
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Vim-like movement for windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Resize windows (Super+Ctrl+Arrow keys, matching your Hyprland setup)
+bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Right resize grow width 10 px or 10 ppt
+
+# Split in horizontal orientation (Super+B for horizontal, like your setup)
+bindsym $mod+b split h
+
+# Split in vertical orientation (Super+V)
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container (Super+F)
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+t layout toggle split
+
+# Toggle tiling / floating (Super+B, like your Hyprland togglefloating)
+bindsym $mod+Shift+b floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+Shift+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace (matching your Hyprland workspace bindings)
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Scratchpad (similar to your special workspace)
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session) - Super+Shift+L like your Hyprland exit
+bindsym $mod+Shift+l exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Screen lock (Super+L, matching your hyprlock binding)
+bindsym $mod+Ctrl+l exec i3lock -c 303446
+
+# Screenshots (matching your Hyprland screenshot bindings)
+bindsym $mod+Print exec ~/.local/bin/screenshot.sh window
+bindsym $mod+Shift+Print exec ~/.local/bin/screenshot.sh full
+bindsym Print exec ~/.local/bin/screenshot.sh region
+
+# Volume controls (matching your Hyprland multimedia keys)
+bindsym XF86AudioRaiseVolume exec ~/.local/bin/volume-control.sh up
+bindsym XF86AudioLowerVolume exec ~/.local/bin/volume-control.sh down
+bindsym XF86AudioMute exec ~/.local/bin/volume-control.sh mute
+
+# Brightness controls (matching your Hyprland brightness keys)
+bindsym XF86MonBrightnessUp exec brightnessctl s 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+
+# Media player controls (matching your Hyprland playerctl bindings)
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Window appearance - Official Catppuccin Frappe theme
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+# Window borders and gaps - Adjusted for high DPI (2880x1920@120Hz)
+default_border pixel 3
+default_floating_border pixel 3
+
+# Gaps - Scaled up for high resolution display
+gaps inner 8
+gaps outer 15
+
+# Smart gaps (disable gaps if only one window)
+smart_gaps on
+
+# Smart borders (disable borders if only one window)
+smart_borders on
+
+# Window rules (matching some of your Hyprland window rules)
+for_window [class="Slack"] move to workspace $ws6
+
+# Floating windows
+for_window [class="Lxappearance"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# Start i3bar to display a workspace bar (plus the system information i3status finds out)
+bar {
+    status_command i3status
+    position top
+    font pango:JetBrainsMono NF Regular 14  # Increased for high DPI
+    separator_symbol "│"
+    
+    # Bar appearance using official Catppuccin Frappe theme
+    colors {
+        background         $base
+        statusline         $text
+        focused_statusline $text
+        focused_separator  $base
+        
+        # target           border bg        text
+        focused_workspace  $base  $mauve    $crust
+        active_workspace   $base  $surface2 $text
+        inactive_workspace $base  $base     $text
+        urgent_workspace   $base  $red      $crust
+        binding_mode       $base  $yellow   $crust
+    }
+}
+
+# Modes for resize (using vim-like keys)
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+# Enter resize mode
+bindsym $mod+Shift+Return mode "resize"

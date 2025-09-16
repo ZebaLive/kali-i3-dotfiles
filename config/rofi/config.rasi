@@ -1,0 +1,43 @@
+configuration {
+    // Display settings
+    display-drun: " Applications";
+    display-window: "﩯 Windows";
+    display-combi: " Search";
+    
+    // Behavior
+    show-icons: true;
+    icon-theme: "Papirus";
+    
+    // Layout
+    columns: 1;
+    lines: 8;
+    
+    // Matching
+    matching: "fuzzy";
+    case-sensitive: false;
+    
+    // Theme - Using official Catppuccin Frappe
+    theme: "catppuccin-frappe-complete";
+    
+    // Font - Increased size for high DPI display (2880x1920@120Hz)
+    font: "JetBrainsMono NF 16";
+    
+    // Window positioning - Adjusted for high resolution
+    location: 0;
+    width: 25;
+    
+    // Modi
+    modi: "drun,window,run";
+    
+    // Terminal for running commands
+    terminal: "kitty";
+    
+    // Disable history
+    disable-history: false;
+    
+    // Sort entries
+    sort: true;
+    
+    // Cycle through results
+    cycle: true;
+}

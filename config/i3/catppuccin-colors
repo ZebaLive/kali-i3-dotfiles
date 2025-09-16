@@ -1,0 +1,5 @@
+# Official Catppuccin i3 Theme Configuration
+# This file includes the official Catppuccin Frappe theme
+
+# Include the official Catppuccin Frappe color definitions
+include ~/.config/i3/catppuccin-frappe
