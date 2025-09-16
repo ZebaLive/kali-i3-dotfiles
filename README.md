@@ -18,7 +18,7 @@ This setup provides a complete i3 window manager configuration for Kali Linux th
 
 1. **Run the setup script:**
    ```bash
-   cd kali-dotfiles
+   cd kali-i3-dotfiles
    chmod +x setup.sh
    ./setup.sh
    ```

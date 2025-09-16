@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Simple one-liner installer for Kali Linux i3 setup
-# Usage: curl -sSL https://raw.githubusercontent.com/ZebaLive/ZebaLive/kali-i3-dotfiles/main/install.sh | bash
+# Usage: curl -sSL https://raw.githubusercontent.com/ZebaLive/kali-i3-dotfiles/refs/heads/main/install.sh | bash
 
 set -e
 
