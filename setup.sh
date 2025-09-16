@@ -248,8 +248,8 @@ setup_zsh() {
     # Create necessary directories
     mkdir -p "$HOME/.config/zsh"
     mkdir -p "$HOME/.config/oh-my-posh"
-        "$HOME/.config/btop"
-        "$HOME/.config/btop/themes"
+    mkdir -p "$HOME/.config/btop"
+    mkdir -p "$HOME/.config/btop/themes"
     
     # Copy zsh configuration files
     if [ -f "$script_dir/config/zshrc" ]; then
