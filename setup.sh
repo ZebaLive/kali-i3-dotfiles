@@ -279,7 +279,9 @@ setup_zsh() {
     else
         log_info "Zsh is already the default shell"
     fi
-}# Download and install Catppuccin theme for rofi
+}
+
+# Download and install Catppuccin theme for rofi
 install_rofi_theme() {
     log_info "Installing Catppuccin theme for rofi..."
     
